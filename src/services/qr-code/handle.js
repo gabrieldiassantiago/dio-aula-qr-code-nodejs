@@ -2,6 +2,7 @@ import qr from "qrcode-terminal";
 import chalk from "chalk";
 
 function handle(err, result) {
+    
     if (err) {
         console.log(err)
         return;
