@@ -1,5 +1,5 @@
 import prompt from 'prompt';
-import mainPrompt from './prompts/prompt-main.js';
+import schemaMain from './prompts/prompt-main.js';
 import createQRCode from './services/qr-code/create.js';
 import createPassword from './services/password/create.js'
 import 'dotenv/config'
@@ -7,11 +7,7 @@ import 'dotenv/config'
 
 async function main() {
     prompt.start();
-    prompt.get(mainPrompt, async (err, choose) => {
-        if (err) {
-            console.error("Erro:", err);
-            return;
-        }
+    prompt.get(schemaMain, async (err, choose) => {
 
         if (choose.select === '1') {
             await createQRCode();
@@ -20,6 +16,11 @@ async function main() {
         if (choose.select === '2') {
            await createPassword();
         }
+        
+        if (choose.select !== '1' && choose.select !== '2') {
+            console.log('Opção inválida. Por favor, selecione 1 ou 2.');
+        }
+
     });
 }
 
