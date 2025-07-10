@@ -21,6 +21,8 @@ async function main() {
             console.log('Opção inválida. Por favor, selecione 1 ou 2.');
         }
 
+        
+
     });
 }
 
